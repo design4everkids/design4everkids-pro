@@ -1,3 +1,4 @@
+import RelatedProducts from "@/components/shop/RelatedProducts";
 import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/data/products";
@@ -80,7 +81,7 @@ export default async function ProductDetailsPage({
           </div>
 
         </div>
-
+ <RelatedProducts currentId={product.id} />
       </div>
     </main>
   );
