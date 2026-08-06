@@ -27,11 +27,13 @@ const filteredProducts = products.filter((product) => {
 
         {filteredProducts.map((product) => (
           <ProductCard
-            key={product.id}
-            title={product.title}
-            category={product.category}
-            price={product.price}
-          />
+  key={product.id}
+  id={product.id}
+  title={product.title}
+  category={product.category}
+  price={product.price}
+  image={product.image}
+/>
         ))}
 
       </div>

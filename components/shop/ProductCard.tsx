@@ -1,17 +1,30 @@
+import Image from "next/image";
+import Link from "next/link";
 type ProductCardProps = {
+  id: number;
   title: string;
   category: string;
   price: number;
+  image: string;
 };
 
 export default function ProductCard({
-  title,
-  category,
-  price,
+  id,
+title,
+category,
+price,
+image,
 }: ProductCardProps) {
   return (
     <div className="rounded-2xl bg-white p-6 shadow-md transition hover:shadow-xl">
-      <div className="mb-4 h-48 rounded-xl bg-pink-100"></div>
+      <div className="relative mb-4 h-48 overflow-hidden rounded-xl">
+  <Image
+    src={image}
+    alt={title}
+    fill
+    className="object-cover"
+  />
+</div>
 
       <p className="text-sm text-pink-600">{category}</p>
 
@@ -21,9 +34,12 @@ export default function ProductCard({
         ${price}
       </p>
 
-      <button className="mt-5 w-full rounded-full bg-pink-600 py-3 font-semibold text-white hover:bg-pink-700">
-        View Details
-      </button>
+      <Link
+  href={`/shop/${id}`}
+  className="block w-full rounded-full bg-pink-600 py-3 text-center font-semibold text-white hover:bg-pink-700 transition"
+>
+  View Details
+</Link>
     </div>
   );
 }
