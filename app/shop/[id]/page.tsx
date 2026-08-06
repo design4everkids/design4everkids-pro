@@ -1,4 +1,5 @@
 import RelatedProducts from "@/components/shop/RelatedProducts";
+import AddToCartButton from "@/components/shop/AddToCartButton";
 import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/data/products";
@@ -67,9 +68,7 @@ export default async function ProductDetailsPage({
               ${product.price}
             </p>
 
-            <button className="mt-8 w-full rounded-xl bg-pink-600 py-4 text-white font-semibold text-lg hover:bg-pink-700 transition">
-              Buy Now
-            </button>
+            <AddToCartButton productId={product.id} />
 
             <Link
   href="/shop"
