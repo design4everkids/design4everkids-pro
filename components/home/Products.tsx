@@ -14,8 +14,8 @@ const products = [
   },
   {
     id: 3,
-    title: "Birds Workbook",
-    image: "/products/birds.png",
+    title: "Coloring Workbook",
+    image: "/products/coloring.png",
     price: "$3.99",
   },
   {

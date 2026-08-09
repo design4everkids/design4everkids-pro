@@ -1,20 +1,43 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-type CartContextType = {
-  cart: number[];
-  setCart: React.Dispatch<React.SetStateAction<number[]>>;
+export type CartItem = {
+  id: number;
+  quantity: number;
 };
 
-export const CartContext = createContext<CartContextType | null>(null);
+type CartContextType = {
+  cart: CartItem[];
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+};
+
+export const CartContext =
+  createContext<CartContextType | null>(null);
 
 export default function CartProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [cart, setCart] = useState<number[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  // Load cart from localStorage
+  useEffect(() => {
+    const savedCart = localStorage.getItem("design4ever-cart");
+
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // Save cart to localStorage whenever cart changes
+  useEffect(() => {
+    localStorage.setItem(
+      "design4ever-cart",
+      JSON.stringify(cart)
+    );
+  }, [cart]);
 
   return (
     <CartContext.Provider value={{ cart, setCart }}>

@@ -10,18 +10,18 @@ import Footer from "../components/layout/Footer";
 export default function Home() {
   return (
     <>
-  <Navbar />
+      <Navbar />
 
-  <main className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
-    <Hero />
-    <Categories />
-    <Products />
-    <Features />
-    <Testimonials />
-    <CTA />
-  </main>
+      <main className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
+        <Hero />
+        <Categories />
+        <Products />
+        <Features />
+        <Testimonials />
+        <CTA />
+      </main>
 
-  <Footer />
-</>
+      <Footer />
+    </>
   );
 }
