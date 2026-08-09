@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import ShopHeader from "@/components/shop/ShopHeader";
@@ -8,7 +8,7 @@ import SearchBar from "@/components/shop/SearchBar";
 import CategoryFilter from "@/components/shop/CategoryFilter";
 import ProductGrid from "@/components/shop/ProductGrid";
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
 
   const categoryFromUrl = searchParams.get("category");
@@ -19,23 +19,43 @@ export default function ShopPage() {
   );
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
+    <>
       <ShopHeader />
 
-      <SearchBar
-        search={search}
-        setSearch={setSearch}
-      />
+      <main className="min-h-screen bg-pink-50 px-6 py-12">
+        <div className="mx-auto max-w-7xl">
+          <SearchBar
+            search={search}
+            setSearch={setSearch}
+          />
 
-      <CategoryFilter
-        category={category}
-        setCategory={setCategory}
-      />
+          <CategoryFilter
+            category={category}
+            setCategory={setCategory}
+          />
 
-      <ProductGrid
-        search={search}
-        category={category}
-      />
-    </main>
+          <ProductGrid
+            search={search}
+            category={category}
+          />
+        </div>
+      </main>
+    </>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <p className="text-gray-600">
+            Loading shop...
+          </p>
+        </div>
+      }
+    >
+      <ShopContent />
+    </Suspense>
   );
 }
