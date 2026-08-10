@@ -43,13 +43,13 @@ export default function Navbar() {
             Categories
           </Link>
 
-          <Link href="#" className="hover:text-pink-600">
-            About
-          </Link>
+          <Link href="/about" className="hover:text-pink-600">
+  About
+</Link>
 
-          <Link href="#" className="hover:text-pink-600">
-            Contact
-          </Link>
+          <Link href="/contact" className="hover:text-pink-600">
+  Contact
+</Link>
         </nav>
 
         {/* Right Side */}
@@ -91,13 +91,13 @@ export default function Navbar() {
               Categories
             </Link>
 
-            <Link href="#" onClick={() => setOpen(false)}>
-              About
-            </Link>
+            <Link href="/about" onClick={() => setOpen(false)}>
+  About
+</Link>
 
-            <Link href="#" onClick={() => setOpen(false)}>
-              Contact
-            </Link>
+            <Link href="/contact" onClick={() => setOpen(false)}>
+  Contact
+</Link>
 
           </nav>
         </div>
