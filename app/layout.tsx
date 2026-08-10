@@ -9,8 +9,50 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Design4Ever Kids",
-  description: "Printable Learning Resources",
+  title: {
+    default: "Design4Ever Kids | Printable Learning Resources",
+    template: "%s | Design4Ever Kids",
+  },
+
+  description:
+    "Fun and engaging printable learning resources, tracing workbooks, coloring activities, and educational worksheets for kids.",
+
+  keywords: [
+    "printable worksheets for kids",
+    "kids printable activities",
+    "preschool worksheets",
+    "kindergarten worksheets",
+    "tracing workbook",
+    "alphabet tracing",
+    "number tracing",
+    "kids coloring workbook",
+    "educational printables",
+    "Design4Ever Kids",
+  ],
+
+  authors: [
+    {
+      name: "Design4Ever Kids",
+    },
+  ],
+
+  creator: "Design4Ever Kids",
+
+  metadataBase: new URL("https://www.design4everkids.com"),
+
+  openGraph: {
+    title: "Design4Ever Kids | Printable Learning Resources",
+    description:
+      "Fun and engaging printable learning resources for kids.",
+    url: "https://www.design4everkids.com",
+    siteName: "Design4Ever Kids",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -21,10 +63,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-  <CartProvider>
-    {children}
-  </CartProvider>
-</body>
+        <CartProvider>
+          {children}
+        </CartProvider>
+      </body>
     </html>
   );
 }
